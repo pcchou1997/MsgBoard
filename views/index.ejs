@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>msgBoard</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body>
+    <nav class="navbar">留言板</nav>
+    <div>
+    <h2>發表一篇圖文</h2>
+    <div class="edit-container">
+        <div class="text">
+      <div>文字內容：
+      </div>
+      <input type="text" />
+        </div>
+      <div class="file">
+      <div>圖片檔案：</div>
+      <input
+        type="file"
+        id="file-uploader"
+        data-target="file-uploader"
+        accept="image/*"
+      />
+    </div>
+    <div class="button"><button>送出</button></div>
+    </div>
+    <div class="msgboard">
+    </div>
+<script src="../main.js"></script>
+  </body>
+</html>
