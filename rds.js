@@ -55,6 +55,7 @@ export async function addData(comment, image) {
   //   });
 }
 
+// 查詢留言
 export async function readData() {
   //   connection.connect((err) => {
   //     if (err) throw err;
@@ -71,22 +72,5 @@ export async function readData() {
       }
     });
   });
-  // 整理成JSON格式
-  let JSON_result = JSON.stringify(data);
-  return JSON_result;
+  return data;
 }
-
-//   // 更改留言
-//   let sql =
-//     "UPDATE customers SET address = 'XinYi district' WHERE name = 'Blackie'";
-//   connection.query(sql, function (err, result) {
-//     if (err) throw err;
-//     console.log(result);
-//   });
-
-//   // 刪除留言
-//   let sql = "DELETE FROM customers WHERE name = 'Blackie'";
-//   connection.query(sql, function (err, result) {
-//     if (err) throw err;
-//     console.log(result);
-//   });

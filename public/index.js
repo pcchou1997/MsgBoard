@@ -1,6 +1,7 @@
 const button = document.querySelector(".button");
 const imageInput = document.querySelector("#file-uploader");
 const comment = document.querySelector("#comment");
+const msgBoard = document.querySelector(".msgboard");
 
 button.addEventListener("click", async (event) => {
   event.preventDefault();
@@ -43,7 +44,7 @@ button.addEventListener("click", async (event) => {
 
     // read RDS
 
-    const data = await fetch("/read")
+    await fetch("/read")
       .then((res) => {
         return res.json();
       })
