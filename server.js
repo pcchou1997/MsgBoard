@@ -36,8 +36,8 @@ app.get("/imgStorage", async (req, res) => {
 app.post("/database", async (req, res) => {
   let data = req.body;
   const comment = data.comment;
-  const imageURL = data.imageURL;
-  const result = await addData(comment, imageURL);
+  const image = data.image;
+  const result = await addData(comment, image);
   res.send(result);
 });
 

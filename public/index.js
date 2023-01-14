@@ -14,7 +14,9 @@ fetch("/read")
       newNode.setAttribute("class", "message");
       let content = `
         <div class="message_comment">${jsonResponse[i].comment}</div>
-        <img class="message_image" src="${jsonResponse[i].image}" alt="">`;
+        <img class="message_image" src="${
+          "http://d1v357yavrduf9.cloudfront.net/" + jsonResponse[i].image
+        }" alt="">`;
       newNode.innerHTML = content;
       msgBoard.appendChild(newNode);
     }
@@ -45,13 +47,15 @@ button.addEventListener("click", async (event) => {
     await fetch(url, {
       method: "PUT",
       headers: {
-        "Content-type": "multipart/form-data",
+        "Content-type": "image/png",
       },
       body: file,
     });
 
     const imageURL = url.split("?")[0];
     console.log(imageURL);
+    const imageHex = imageURL.split("/");
+    const image = imageHex[imageHex.length - 1];
 
     // fetch RDS
 
@@ -60,7 +64,7 @@ button.addEventListener("click", async (event) => {
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify({ comment: commentValue, imageURL: imageURL }),
+      body: JSON.stringify({ comment: commentValue, image: image }),
     });
 
     // read RDS
@@ -79,7 +83,9 @@ button.addEventListener("click", async (event) => {
           newNode.setAttribute("class", "message");
           let content = `
         <div class="message_comment">${jsonResponse[i].comment}</div>
-        <img class="message_image" src="${jsonResponse[i].image}" alt="">`;
+        <img class="message_image" src="${
+          "http://d1v357yavrduf9.cloudfront.net/" + jsonResponse[i].image
+        }" alt="">`;
           newNode.innerHTML = content;
           msgBoard.appendChild(newNode);
         }
