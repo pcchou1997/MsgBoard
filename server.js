@@ -1,6 +1,6 @@
 import express from "express";
 import { generateUploadURL } from "./s3.js";
-import { addData } from "./rds.js";
+import { addData, readData } from "./rds.js";
 import mysql from "mysql";
 import dotenv from "dotenv";
 const app = express();
@@ -28,17 +28,22 @@ app.get("/", function (req, res) {
 });
 
 // app.METHOD(PATH,HANDLER(request,response))，從req拿到資訊，用res做出回應
-app.get("/s3url", async (req, res) => {
+app.get("/imgStorage", async (req, res) => {
   const url = await generateUploadURL();
   res.send({ url });
 });
 
-app.post("/rds", async (req, res) => {
+app.post("/database", async (req, res) => {
   let data = req.body;
   const comment = data.comment;
   const imageURL = data.imageURL;
   const result = await addData(comment, imageURL);
   res.send(result);
+});
+
+app.get("/read", async (req, res) => {
+  const result = await readData();
+  res.json(result);
 });
 
 // 404 NOT FOUND

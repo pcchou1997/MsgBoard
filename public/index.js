@@ -15,7 +15,7 @@ button.addEventListener("click", async (event) => {
   } else {
     // get secure url from server
 
-    const { url } = await fetch("/s3Url").then((res) => res.json());
+    const { url } = await fetch("/imgStorage").then((res) => res.json());
     console.log(url);
 
     // post the image directly to the s3 bucket
@@ -33,12 +33,26 @@ button.addEventListener("click", async (event) => {
 
     // fetch RDS
 
-    await fetch("/rds", {
+    await fetch("/database", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
       },
       body: JSON.stringify({ comment: commentValue, imageURL: imageURL }),
     });
+
+    // read RDS
+
+    const data = await fetch("/read")
+      .then((res) => {
+        return res.json();
+      })
+      .then((jsonResponse) => {
+        console.log(jsonResponse);
+      })
+      .catch((err) => {
+        // handle error
+        console.error(err);
+      });
   }
 });
