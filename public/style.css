@@ -56,3 +56,18 @@ button:hover {
   background-color: rgb(56, 138, 209);
   color: white;
 }
+
+.message {
+  width: 350px;
+  margin: 0px auto;
+  padding: 10px 0px;
+  border-bottom: 1px solid gray;
+}
+
+.message_comment {
+  width: 100%;
+}
+
+.message_image {
+  width: 30%;
+}
