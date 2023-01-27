@@ -27,6 +27,10 @@ app.get("/", function (req, res) {
   res.render("index");
 });
 
+app.get("/loaderio-aa583ce82acd3f66d8b67b0f3a8b4cb8/", function (req, res) {
+  res.send("loaderio-aa583ce82acd3f66d8b67b0f3a8b4cb8");
+});
+
 // app.METHOD(PATH,HANDLER(request,response))，從req拿到資訊，用res做出回應
 app.get("/imgStorage", async (req, res) => {
   const url = await generateUploadURL();

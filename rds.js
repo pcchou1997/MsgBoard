@@ -6,14 +6,15 @@ const RDS_DB_IDENTIFIER = process.env.RDS_DB_IDENTIFIER;
 const RDS_USER_NAME = process.env.RDS_USER_NAME;
 const RDS_USER_PASSWORD = process.env.RDS_USER_PASSWORD;
 
-let connection = mysql.createConnection({
+let connection = mysql.createPool({
+  connectionLimit: 20,
   host: "cococal-mysql.cxpazwtm0zdn.ap-northeast-3.rds.amazonaws.com",
   user: RDS_USER_NAME,
   password: RDS_USER_PASSWORD,
   database: "msgBoardDB",
 });
 
-connection.connect((err) => {
+connection.getConnection((err) => {
   if (err) throw err;
   console.log("Connected!");
 });
